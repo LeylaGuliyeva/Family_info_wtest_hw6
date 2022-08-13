@@ -5,15 +5,15 @@ import java.util.Objects;
 
 public class Pet {
 
-    private String species;
+    private Species species;
     private String nickname;
     private int age;
     private int trickLevel;
     private String habits[];
-    public String getSpecies() {
+    public Species getSpecies() {
         return species;
     }
-    public void setSpecies(String species) {
+    public void setSpecies(Species species) {
         this.species = species;
     }
 
@@ -66,12 +66,12 @@ public class Pet {
 
     Pet(){
     }
-    Pet(String sp,String nnm){
+    Pet(Species sp,String nnm){
         this.species=sp;
         this.nickname=nnm;
 
     }
-    Pet(String sp,String nnm,int a,int tl,String hbt[]){
+    Pet(Species sp,String nnm,int a,int tl,String hbt[]){
         this.species=sp;
         this.nickname=nnm;
         this.age=a;
@@ -90,5 +90,9 @@ public class Pet {
     @Override
     public int hashCode() {
         return Objects.hash(getSpecies(), getNickname(), getAge());
+    }
+    @Override
+    public void finalize(){
+        System.out.println("Pet class element will be deleted!");
     }
 }
