@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Human {
@@ -56,16 +57,17 @@ public class Human {
         this.surname = surname;
     }
 
+
     @Override
     public String toString(){
-        return "Human{name='" + this.name + "', surname='" + this.surname + "', year=" + this.year + ", iq=" + (this.iq!=0?this.iq:"null") +"}";
+        return "Human{name='" + this.name + "', surname='" + this.surname + "', year=" + this.year + ", iq=" + (this.iq!=0?this.iq:"null") + "schedule="+Arrays.deepToString(this.schedule)+"}";
     }
 
 
     Human() {
 
     }
-    Human(String nm, String snm, int yr) {
+    Human(String nm, String snm, int yr){
         this.name = nm;
         this.surname = snm;
         this.year = yr;
@@ -91,5 +93,9 @@ public class Human {
     @Override
     public int hashCode() {
         return Objects.hash(getName(), getSurname(), getYear(), getFamily());
+    }
+    @Override
+    public void finalize(){
+        System.out.println("Human class element will be deleted!");
     }
 }
